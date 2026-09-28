@@ -1,0 +1,138 @@
+/* General page styling */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f2f2f2;
+    color: #333;
+    margin: 0;
+    padding: 40px 20px;
+    line-height: 1.6;
+}
+
+/* Main resume container */
+.resume {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 45px 55px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.12);
+}
+
+/* Header */
+header {
+    text-align: center;
+    border-bottom: 3px solid #333;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    margin: 0 0 8px;
+    font-size: 38px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+header p {
+    margin: 0;
+    font-size: 15px;
+    color: #555;
+}
+
+/* Section headings */
+section {
+    margin-bottom: 30px;
+}
+
+h2 {
+    font-size: 21px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid #333;
+    padding-bottom: 6px;
+    margin-bottom: 15px;
+}
+
+/* Paragraphs */
+section p {
+    margin-top: 5px;
+}
+
+/* Skills */
+.skills {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px 30px;
+    padding-left: 20px;
+}
+
+/* Jobs */
+.job {
+    margin-bottom: 25px;
+}
+
+.job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 20px;
+}
+
+.job-header h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.job-header span {
+    font-size: 14px;
+    color: #555;
+    white-space: nowrap;
+}
+
+.company {
+    font-weight: bold;
+    margin: 3px 0 8px;
+}
+
+/* Job bullet points */
+.job ul {
+    margin-top: 5px;
+    padding-left: 22px;
+}
+
+.job li {
+    margin-bottom: 5px;
+}
+
+/* Education */
+.education {
+    margin-top: 10px;
+}
+
+/* Mobile-friendly layout */
+@media (max-width: 650px) {
+
+    body {
+        padding: 15px;
+    }
+
+    .resume {
+        padding: 30px 25px;
+    }
+
+    header h1 {
+        font-size: 30px;
+    }
+
+    .skills {
+        grid-template-columns: 1fr;
+    }
+
+    .job-header {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .job-header span {
+        white-space: normal;
+    }
+}
