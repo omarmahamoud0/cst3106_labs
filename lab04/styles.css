@@ -1,0 +1,164 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #0F172A;
+    color: #F8FAFC;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #0F172A;
+    padding: 20px 8%;
+    border-bottom: 1px solid #1E293B;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav h2 {
+    margin: 0;
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    color: #CBD5E1;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    color: #38BDF8;
+}
+
+.hero {
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 8%;
+}
+
+.intro {
+    color: #38BDF8;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 5px;
+}
+
+.hero h1 {
+    font-size: 64px;
+    margin: 0;
+    letter-spacing: 2px;
+}
+
+.role {
+    font-size: 22px;
+    color: #CBD5E1;
+    margin: 10px 0 30px;
+}
+
+.button {
+    display: inline-block;
+    width: fit-content;
+    padding: 12px 22px;
+    background-color: #38BDF8;
+    color: #0F172A;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 6px;
+}
+
+.button:hover {
+    opacity: 0.85;
+}
+
+.section {
+    padding: 80px 8%;
+    background-color: #1E293B;
+}
+
+.section:nth-child(even) {
+    background-color: #0F172A;
+}
+
+.section h2 {
+    font-size: 36px;
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+.section > p {
+    max-width: 700px;
+    color: #CBD5E1;
+}
+
+.cards {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.card,
+.project-card {
+    flex: 1;
+    min-width: 250px;
+    background-color: #FFFFFF;
+    color: #0F172A;
+    padding: 25px;
+    border-radius: 8px;
+}
+
+.card h3,
+.project-card h3 {
+    margin-top: 0;
+}
+
+.card p,
+.project-card p {
+    color: #475569;
+}
+
+.project-image {
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0F172A;
+    color: #38BDF8;
+    font-weight: bold;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.contact {
+    text-align: center;
+}
+
+.contact > p {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    background-color: #0F172A;
+    color: #CBD5E1;
+}
