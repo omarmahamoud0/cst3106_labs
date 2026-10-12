@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yatzy Game</title>
+
+    <!-- Connect the HTML page to the external stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Main container for the complete game interface -->
+    <main class="game-container">
+
+        <!-- Header: game title and description -->
+        <header class="game-header">
+            <div>
+                <p class="eyebrow">DICE GAME</p>
+                <h1>Yatzy</h1>
+                <p class="subtitle">
+                    Roll the dice, choose your combinations, and aim for the highest score.
+                </p>
+            </div>
+
+            <div class="turn-card">
+                <span class="muted-label">CURRENT TURN</span>
+                <strong>01 / 13</strong>
+            </div>
+        </header>
+
+        <!-- Game area: dice and rolling controls -->
+        <section class="dice-section">
+            <div class="section-heading">
+                <div>
+                    <h2>Roll the dice</h2>
+                    <p class="muted-text">Select the dice you want to keep.</p>
+                </div>
+
+                <div class="roll-counter">
+                    Rolls left: <strong>2</strong>
+                </div>
+            </div>
+
+            <!-- Each die uses CSS grid to arrange its pips -->
+            <div class="dice-container">
+
+                <button class="die" type="button"
+                        aria-label="Die showing one">
+                    <span class="pip center"></span>
+                </button>
+
+                <button class="die selected" type="button"
+                        aria-label="Die showing two, selected">
+                    <span class="pip top-left"></span>
+                    <span class="pip bottom-right"></span>
+                </button>
+
+                <button class="die" type="button"
+                        aria-label="Die showing three">
+                    <span class="pip top-left"></span>
+                    <span class="pip center"></span>
+                    <span class="pip bottom-right"></span>
+                </button>
+
+                <button class="die" type="button"
+                        aria-label="Die showing four">
+                    <span class="pip top-left"></span>
+                    <span class="pip top-right"></span>
+                    <span class="pip bottom-left"></span>
+                    <span class="pip bottom-right"></span>
+                </button>
+
+                <button class="die" type="button"
+                        aria-label="Die showing five">
+                    <span class="pip top-left"></span>
+                    <span class="pip top-right"></span>
+                    <span class="pip center"></span>
+                    <span class="pip bottom-left"></span>
+                    <span class="pip bottom-right"></span>
+                </button>
+
+            </div>
+
+            <!-- Main action buttons -->
+            <div class="game-actions">
+                <button class="primary-button" type="button">
+                    Roll Dice
+                </button>
+
+                <button class="secondary-button" type="button">
+                    New Game
+                </button>
+            </div>
+
+            <p class="helper-text">
+                Choose a scoring category when you finish rolling.
+            </p>
+        </section>
+
+        <!-- Scorecard: available scoring categories and current scores -->
+        <section class="scorecard-section">
+            <div class="section-heading">
+                <div>
+                    <h2>Scorecard</h2>
+                    <p class="muted-text">Choose one category per turn.</p>
+                </div>
+
+                <div class="total-score">
+                    <span class="muted-label">TOTAL SCORE</span>
+                    <strong>0</strong>
+                </div>
+            </div>
+
+            <div class="scorecard-wrapper">
+                <table class="scorecard">
+                    <thead>
+                        <tr>
+                            <th scope="col">Category</th>
+                            <th scope="col">Combination</th>
+                            <th scope="col">Score</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>Ones</td>
+                            <td>Sum of ones</td>
+                            <td class="score-value">—</td>
+                        </tr>
+                        <tr>
+                            <td>Twos</td>
+                            <td>Sum of twos</td>
+                            <td class="score-value">—</td>
+                        </tr>
+                        <tr>
+                            <td>Threes</td>
+                            <td>Sum of threes</td>
+                            <td class="score-value">—</td>
+                        </tr>
+                        <tr>
+                            <td>Fours</td>
+                            <td>Sum of fours</td>
+                            <td class="score-value">—</td>
+                        </tr>
+                        <tr>
+                            <td>Fives</td>
+                            <td>Sum of fives</td>
+                            <td class="score-value">—</td>
+                        </tr>
+                        <tr>
+                            <td>Sixes</td>
+                            <td>Sum of sixes</td>
+                            <td class="score-value">—</td>
+                        </tr>
+                        <tr>
+                            <td>Three of a Kind</td>
+                            <td>At least three matching dice</td>
+                            <td class="score-value">—</td>
+                        </tr>
+                        <tr>
+                            <td>Four of a Kind</td>
+                            <td>At least four matching dice</td>
+                            <td class="score-value">—</td>
+                        </tr>
+                        <tr>
+                            <td>Full House</td>
+                            <td>Three matching and a pair</td>
+                            <td class="score-value">—</td>
+                        </tr>
+                        <tr>
+                            <td>Small Straight</td>
+                            <td>Four consecutive values</td>
+                            <td class="score-value">—</td>
+                        </tr>
+                        <tr>
+                            <td>Large Straight</td>
+                            <td>Five consecutive values</td>
+                            <td class="score-value">—</td>
+                        </tr>
+                        <tr>
+                            <td>Yatzy</td>
+                            <td>Five matching dice</td>
+                            <td class="score-value">—</td>
+                        </tr>
+                        <tr>
+                            <td>Chance</td>
+                            <td>Sum of all five dice</td>
+                            <td class="score-value">—</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Footer: identifies this as the design mock-up -->
+        <footer class="game-footer">
+            <p>CST3106 · Lab 05 · Yatzy Game Design</p>
+        </footer>
+
+    </main>
+
+</body>
+</html>
