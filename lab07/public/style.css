@@ -1,0 +1,481 @@
+:root {
+    --color-primary: #172033;
+    --color-secondary: #2F9E73;
+    --color-accent: #DDF5E8;
+    --color-surface: #FFFFFF;
+    --color-background: #F4F6F8;
+    --color-text: #202938;
+    --color-muted: #6B7280;
+    --color-border: #D9DEE7;
+    --color-error: #D64545;
+
+    --font-main: Arial, sans-serif;
+
+    --radius-small: 8px;
+    --radius-medium: 14px;
+    --radius-large: 20px;
+
+    --shadow-card: 0 8px 24px rgba(23, 32, 51, 0.06);
+}
+
+/* =========================================
+   GENERAL STYLING
+   ========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--color-background);
+    color: var(--color-text);
+    font-family: var(--font-main);
+    line-height: 1.5;
+}
+
+.game-container {
+    width: min(1100px, calc(100% - 40px));
+    margin: 40px auto;
+}
+
+/* =========================================
+   HEADER
+   ========================================= */
+
+.game-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 28px;
+}
+
+.eyebrow {
+    margin: 0 0 6px;
+    color: var(--color-secondary);
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+h1 {
+    margin: 0;
+    color: var(--color-primary);
+    font-size: clamp(32px, 5vw, 44px);
+    line-height: 1.15;
+}
+
+.subtitle {
+    max-width: 580px;
+    margin: 12px 0 0;
+    color: var(--color-muted);
+    font-size: 15px;
+}
+
+.turn-card {
+    min-width: 145px;
+    padding: 18px 22px;
+    background: var(--color-primary);
+    color: var(--color-surface);
+    border-radius: var(--radius-medium);
+    text-align: center;
+}
+
+.turn-card p {
+    margin: 0;
+    color: #CBD5E1;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.turn-card strong {
+    display: block;
+    margin-top: 5px;
+    font-size: 23px;
+}
+
+/* =========================================
+   GAME CARDS
+   ========================================= */
+
+.dice-section,
+.scorecard-section {
+    padding: 28px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-large);
+    box-shadow: var(--shadow-card);
+}
+
+.dice-section {
+    margin-bottom: 24px;
+}
+
+.section-header,
+.scorecard-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.section-header h2,
+.scorecard-header h2 {
+    margin: 0;
+    color: var(--color-primary);
+    font-size: 21px;
+}
+
+.section-header p,
+.scorecard-header p {
+    margin: 5px 0 0;
+    color: var(--color-muted);
+    font-size: 14px;
+}
+
+.roll-counter {
+    padding: 9px 13px;
+    background: var(--color-background);
+    border-radius: var(--radius-small);
+    color: var(--color-muted);
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.roll-counter strong {
+    color: var(--color-primary);
+}
+
+/* =========================================
+   DICE
+   Six dice displayed in one row
+   ========================================= */
+
+.dice-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: clamp(10px, 2vw, 20px);
+    width: 100%;
+    padding: 36px 0 28px;
+}
+
+/* Individual die */
+.die {
+    display: grid;
+    flex: 0 1 68px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    width: 68px;
+    min-width: 0;
+    aspect-ratio: 1 / 1;
+    padding: 8px;
+    background: #FFFFFF;
+    border: 2px solid var(--color-border);
+    border-radius: 13px;
+    box-shadow: 0 4px 10px rgba(23, 32, 51, 0.08);
+    cursor: pointer;
+    transition:
+        border-color 0.2s ease,
+        background-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+/* Hover effect */
+.die:hover {
+    border-color: var(--color-secondary);
+    transform: translateY(-2px);
+}
+
+/* Selected die */
+.die.selected {
+    background: var(--color-accent);
+    border-color: var(--color-secondary);
+    box-shadow: 0 0 0 2px rgba(47, 158, 115, 0.12);
+}
+
+/* Black dots */
+.pip {
+    width: 9px;
+    height: 9px;
+    align-self: center;
+    justify-self: center;
+    background: #000000;
+    border-radius: 50%;
+}
+
+/* Top row */
+.pip.top-left {
+    grid-area: 1 / 1;
+}
+
+.pip.top-right {
+    grid-area: 1 / 3;
+}
+
+/* Middle row */
+.pip.middle-left {
+    grid-area: 2 / 1;
+}
+
+.pip.center {
+    grid-area: 2 / 2;
+}
+
+.pip.middle-right {
+    grid-area: 2 / 3;
+}
+
+/* Bottom row */
+.pip.bottom-left {
+    grid-area: 3 / 1;
+}
+
+.pip.bottom-right {
+    grid-area: 3 / 3;
+}
+
+/* =========================================
+   GAME CONTROLS
+   ========================================= */
+
+.game-controls {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.primary-button,
+.secondary-button {
+    padding: 12px 24px;
+    border: 1px solid transparent;
+    border-radius: var(--radius-small);
+    font-family: var(--font-main);
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.primary-button {
+    background: var(--color-secondary);
+    color: var(--color-surface);
+}
+
+.primary-button:hover {
+    background: #25835F;
+    transform: translateY(-1px);
+}
+
+.secondary-button {
+    background: var(--color-surface);
+    color: var(--color-primary);
+    border-color: var(--color-border);
+}
+
+.secondary-button:hover {
+    background: var(--color-background);
+}
+
+.primary-button:focus-visible,
+.secondary-button:focus-visible,
+.die:focus-visible {
+    outline: 3px solid #72C6A1;
+    outline-offset: 3px;
+}
+
+.game-instructions {
+    margin: 18px 0 0;
+    color: var(--color-muted);
+    font-size: 12px;
+    text-align: center;
+}
+
+/* =========================================
+   SCORECARD
+   ========================================= */
+
+.total-score {
+    min-width: 110px;
+    text-align: right;
+}
+
+.total-score span {
+    color: var(--color-muted);
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.total-score strong {
+    display: block;
+    margin-top: 3px;
+    color: var(--color-secondary);
+    font-size: 28px;
+}
+
+.scorecard-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 8px;
+}
+
+.scorecard-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    text-align: left;
+}
+
+.scorecard-table th {
+    padding: 13px 16px;
+    background: var(--color-primary);
+    color: var(--color-surface);
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 0.4px;
+}
+
+.scorecard-table thead th:first-child {
+    border-radius: 8px 0 0 0;
+}
+
+.scorecard-table thead th:last-child {
+    border-radius: 0 8px 0 0;
+    text-align: center;
+}
+
+.scorecard-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.scorecard-table tbody tr:nth-child(even) {
+    background: #FAFBFC;
+}
+
+.scorecard-table tbody tr:hover {
+    background: var(--color-accent);
+}
+
+.scorecard-table tbody th[scope="row"] {
+    background: transparent;
+    color: var(--color-primary);
+    text-align: left;
+}
+
+.scorecard-table .score-value {
+    width: 90px;
+    color: var(--color-muted);
+    font-weight: bold;
+    text-align: center;
+}
+
+/* =========================================
+   FOOTER
+   ========================================= */
+
+.game-footer {
+    padding: 24px 0;
+    color: var(--color-muted);
+    font-size: 12px;
+    text-align: center;
+}
+
+/* =========================================
+   RESPONSIVE LAYOUT
+   ========================================= */
+
+@media (max-width: 600px) {
+    .game-container {
+        width: calc(100% - 24px);
+        margin: 20px auto;
+    }
+
+    .game-header {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .turn-card {
+        align-self: flex-start;
+    }
+
+    .dice-section,
+    .scorecard-section {
+        padding: 18px;
+    }
+
+    .section-header,
+    .scorecard-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .roll-counter {
+        align-self: flex-start;
+    }
+
+    /* Keep all six dice in one row */
+    .dice-container {
+        gap: 7px;
+        padding: 28px 0 24px;
+    }
+
+    .die {
+        flex: 1 1 0;
+        width: auto;
+        min-width: 0;
+        padding: 4px;
+        border-radius: 9px;
+    }
+
+    .pip {
+        width: clamp(4px, 1.8vw, 7px);
+        height: auto;
+        aspect-ratio: 1 / 1;
+    }
+
+    .game-controls {
+        gap: 8px;
+    }
+
+    .primary-button,
+    .secondary-button {
+        flex: 1;
+        padding: 12px 10px;
+    }
+
+    .scorecard-table {
+        min-width: 480px;
+    }
+}
+
+/* Extra-small screens */
+@media (max-width: 350px) {
+    .dice-section,
+    .scorecard-section {
+        padding: 12px;
+    }
+
+    .dice-container {
+        gap: 5px;
+    }
+
+    .die {
+        padding: 3px;
+        border-radius: 7px;
+    }
+
+    .pip {
+        width: 5px;
+    }
+}

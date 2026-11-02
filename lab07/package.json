@@ -1,0 +1,16 @@
+{
+  "name": "lab07",
+  "version": "1.0.0",
+  "description": "CST3106 Lab 07 - Yatzy client-server dice game",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "Omar Mahamoud",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^5.3.0"
+  }
+}
