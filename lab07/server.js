@@ -12,14 +12,14 @@ const app = express();
 
 const PORT = 3000;
 
-// Serve files from the public folder beside this server.js file.
+// Serve files from the public folder.
 app.use(express.static(path.join(__dirname, "public")));
 
-// Generate six random dice values.
+// Generate five random dice values.
 app.get("/roll-dices", (req, res) => {
     const dice = [];
 
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < 5; i++) {
         const roll = Math.floor(Math.random() * 6) + 1;
         dice.push(roll);
     }

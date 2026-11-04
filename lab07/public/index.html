@@ -22,70 +22,46 @@
 
             <div class="turn-card">
                 <p>CURRENT TURN</p>
-                <strong>01 / 15</strong>
+                <strong id="turn-display">01 / 15</strong>
             </div>
         </header>
 
         <!-- Dice Section -->
         <section class="game-card dice-section">
+
             <div class="section-header">
                 <div>
                     <h2>Roll the dice</h2>
-                    <p>Select the dice you want to keep.</p>
+                    <p>Select dice to hold between rolls.</p>
                 </div>
 
                 <div class="roll-counter">
-                    Rolls left: <strong>2</strong>
+                    Rolls left: <strong id="roll-counter">3</strong>
                 </div>
             </div>
 
-            <!-- Six Dice: Values 1 Through 6 -->
+            <!-- Five Dice -->
             <div class="dice-container" id="dice-container">
 
-                <!-- Die 1 -->
-                <div class="die" role="img" aria-label="Die showing one">
+                <button class="die" type="button" aria-label="Die showing one" aria-pressed="false">
                     <span class="pip center"></span>
-                </div>
+                </button>
 
-                <!-- Die 2 -->
-                <div class="die" role="img" aria-label="Die showing two">
-                    <span class="pip top-left"></span>
-                    <span class="pip bottom-right"></span>
-                </div>
-
-                <!-- Die 3 -->
-                <div class="die" role="img" aria-label="Die showing three">
-                    <span class="pip top-left"></span>
+                <button class="die" type="button" aria-label="Die showing one" aria-pressed="false">
                     <span class="pip center"></span>
-                    <span class="pip bottom-right"></span>
-                </div>
+                </button>
 
-                <!-- Die 4 -->
-                <div class="die" role="img" aria-label="Die showing four">
-                    <span class="pip top-left"></span>
-                    <span class="pip top-right"></span>
-                    <span class="pip bottom-left"></span>
-                    <span class="pip bottom-right"></span>
-                </div>
-
-                <!-- Die 5 -->
-                <div class="die" role="img" aria-label="Die showing five">
-                    <span class="pip top-left"></span>
-                    <span class="pip top-right"></span>
+                <button class="die" type="button" aria-label="Die showing one" aria-pressed="false">
                     <span class="pip center"></span>
-                    <span class="pip bottom-left"></span>
-                    <span class="pip bottom-right"></span>
-                </div>
+                </button>
 
-                <!-- Die 6 -->
-                <div class="die" role="img" aria-label="Die showing six">
-                    <span class="pip top-left"></span>
-                    <span class="pip top-right"></span>
-                    <span class="pip middle-left"></span>
-                    <span class="pip middle-right"></span>
-                    <span class="pip bottom-left"></span>
-                    <span class="pip bottom-right"></span>
-                </div>
+                <button class="die" type="button" aria-label="Die showing one" aria-pressed="false">
+                    <span class="pip center"></span>
+                </button>
+
+                <button class="die" type="button" aria-label="Die showing one" aria-pressed="false">
+                    <span class="pip center"></span>
+                </button>
 
             </div>
 
@@ -100,13 +76,15 @@
                 </button>
             </div>
 
-            <p class="game-instructions">
-                Choose a scoring category when you finish rolling.
+            <p class="game-instructions" id="game-message" aria-live="polite">
+                Roll your dice to begin.
             </p>
+
         </section>
 
         <!-- Scorecard Section -->
         <section class="game-card scorecard-section">
+
             <div class="scorecard-header">
                 <div>
                     <h2>Scorecard</h2>
@@ -115,12 +93,17 @@
 
                 <div class="total-score">
                     <span>TOTAL SCORE</span>
-                    <strong>0</strong>
+                    <strong id="total-score">0</strong>
                 </div>
             </div>
 
+            <p class="scorecard-instructions">
+                Click an unused category after rolling to record your score.
+            </p>
+
             <div class="scorecard-table-wrapper">
                 <table class="scorecard-table">
+
                     <thead>
                         <tr>
                             <th scope="col">Category</th>
@@ -130,98 +113,101 @@
                     </thead>
 
                     <tbody>
-                        <tr>
+
+                        <tr data-category="Ones">
                             <th scope="row">Ones</th>
                             <td>Sum of ones</td>
                             <td class="score-value">—</td>
                         </tr>
 
-                        <tr>
+                        <tr data-category="Twos">
                             <th scope="row">Twos</th>
                             <td>Sum of twos</td>
                             <td class="score-value">—</td>
                         </tr>
 
-                        <tr>
+                        <tr data-category="Threes">
                             <th scope="row">Threes</th>
                             <td>Sum of threes</td>
                             <td class="score-value">—</td>
                         </tr>
 
-                        <tr>
+                        <tr data-category="Fours">
                             <th scope="row">Fours</th>
                             <td>Sum of fours</td>
                             <td class="score-value">—</td>
                         </tr>
 
-                        <tr>
+                        <tr data-category="Fives">
                             <th scope="row">Fives</th>
                             <td>Sum of fives</td>
                             <td class="score-value">—</td>
                         </tr>
 
-                        <tr>
+                        <tr data-category="Sixes">
                             <th scope="row">Sixes</th>
                             <td>Sum of sixes</td>
                             <td class="score-value">—</td>
                         </tr>
 
-                        <tr>
+                        <tr data-category="One Pair">
                             <th scope="row">One Pair</th>
                             <td>Two dice with the same value</td>
                             <td class="score-value">—</td>
                         </tr>
 
-                        <tr>
+                        <tr data-category="Two Pairs">
                             <th scope="row">Two Pairs</th>
                             <td>Two different pairs</td>
                             <td class="score-value">—</td>
                         </tr>
 
-                        <tr>
+                        <tr data-category="Three of a Kind">
                             <th scope="row">Three of a Kind</th>
                             <td>Three dice with the same value</td>
                             <td class="score-value">—</td>
                         </tr>
 
-                        <tr>
+                        <tr data-category="Four of a Kind">
                             <th scope="row">Four of a Kind</th>
                             <td>Four dice with the same value</td>
                             <td class="score-value">—</td>
                         </tr>
 
-                        <tr>
+                        <tr data-category="Small Straight">
+                            <th scope="row">Small Straight</th>
+                            <td>1, 2, 3, 4, 5</td>
+                            <td class="score-value">—</td>
+                        </tr>
+
+                        <tr data-category="Large Straight">
+                            <th scope="row">Large Straight</th>
+                            <td>2, 3, 4, 5, 6</td>
+                            <td class="score-value">—</td>
+                        </tr>
+
+                        <tr data-category="Full House">
                             <th scope="row">Full House</th>
                             <td>Three of one value and two of another</td>
                             <td class="score-value">—</td>
                         </tr>
 
-                        <tr>
-                            <th scope="row">Small Straight</th>
-                            <td>Four consecutive values</td>
-                            <td class="score-value">—</td>
-                        </tr>
-
-                        <tr>
-                            <th scope="row">Large Straight</th>
-                            <td>Five consecutive values</td>
-                            <td class="score-value">—</td>
-                        </tr>
-
-                        <tr>
+                        <tr data-category="Chance">
                             <th scope="row">Chance</th>
-                            <td>Sum of all six dice</td>
+                            <td>Sum of all five dice</td>
                             <td class="score-value">—</td>
                         </tr>
 
-                        <tr>
+                        <tr data-category="Yatzy">
                             <th scope="row">Yatzy</th>
-                            <td>Six dice with the same value</td>
+                            <td>Five dice with the same value</td>
                             <td class="score-value">—</td>
                         </tr>
+
                     </tbody>
                 </table>
             </div>
+
         </section>
 
         <!-- Footer -->

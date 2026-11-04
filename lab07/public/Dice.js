@@ -7,13 +7,13 @@
  */
 
 class Dice {
-    constructor(numberOfDice = 6) {
+    constructor(numberOfDice = 5) {
         this.numberOfDice = numberOfDice;
         this.currentValues = Array(numberOfDice).fill(1);
     }
 
-    // Request dice values from the server.
-    async rollAll() {
+    // Request new dice values from the server.
+    async rollAll(heldIndices = []) {
         const response = await fetch("/roll-dices");
 
         if (!response.ok) {
@@ -35,7 +35,12 @@ class Dice {
             throw new Error("The server returned invalid dice values.");
         }
 
-        this.currentValues = diceValues;
+        // Keep selected dice and update the remaining dice.
+        this.currentValues = diceValues.map((value, index) => {
+            return heldIndices.includes(index)
+                ? this.currentValues[index]
+                : value;
+        });
 
         return this.currentValues;
     }
