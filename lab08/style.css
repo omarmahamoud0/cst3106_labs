@@ -1,0 +1,218 @@
+/* Yatzy styles: green + navy theme, mobile first */
+:root {
+  --navy: #14213d;
+  --navy-light: #24345a;
+  --green: #2e9e5b;
+  --green-dark: #217a45;
+  --green-light: #e3f5ea;
+  --gold: #f2b84b;
+  --bg: #f2f5f9;
+  --card: #ffffff;
+  --text: #1c2433;
+  --muted: #6b7587;
+  --radius: 14px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.app {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.hidden { display: none !important; }
+
+/* Header */
+.header {
+  text-align: center;
+  background: var(--navy);
+  color: #fff;
+  border-radius: var(--radius);
+  padding: 18px 12px;
+}
+.header h1 { margin: 0; font-size: 2.2rem; letter-spacing: 3px; }
+.subtitle { margin: 4px 0 0; color: #b9c4dc; font-size: 0.95rem; }
+
+/* Status cards */
+.status {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 14px 0;
+}
+.status-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 1px 4px rgba(20, 33, 61, 0.12);
+}
+.status-card.total { background: var(--green); color: #fff; }
+.label { display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.8; }
+.value { display: block; font-size: 1.7rem; font-weight: 700; }
+
+/* Message */
+.message {
+  min-height: 3em;
+  margin: 0 0 12px;
+  padding: 10px 14px;
+  background: var(--green-light);
+  border-left: 5px solid var(--green);
+  border-radius: 8px;
+}
+
+/* Dice */
+.dice-section {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 16px 10px 10px;
+  box-shadow: 0 1px 4px rgba(20, 33, 61, 0.12);
+}
+.dice {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.die {
+  width: 68px;
+  height: 68px;
+  padding: 8px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  background: #fff;
+  border: 3px solid var(--navy);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.12s, background 0.12s;
+}
+.die:hover:not(:disabled) { transform: translateY(-3px); }
+.die:disabled { cursor: default; }
+.die.empty { background: #e6eaf0; border-color: #b7c0cf; border-style: dashed; }
+.die.selected { background: var(--green-light); border-color: var(--green); box-shadow: 0 0 0 3px var(--green); }
+.die span { display: flex; align-items: center; justify-content: center; }
+.pip { width: 100%; height: 100%; }
+.pip::after {
+  content: "";
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--navy);
+}
+.die.selected .pip::after { background: var(--green-dark); }
+.hint { text-align: center; color: var(--muted); font-size: 0.85rem; margin: 10px 0 2px; }
+
+/* Lab 8: shake animation while dice are rolling (class added/removed by jQuery) */
+.die.rolling {
+  background: #fff;
+  border-color: var(--green);
+  animation: shake 0.18s infinite;
+}
+.die.rolling .pip::after { background: var(--green-dark); }
+@keyframes shake {
+  0%   { transform: rotate(0deg) translate(0, 0); }
+  25%  { transform: rotate(-14deg) translate(-3px, 2px); }
+  50%  { transform: rotate(12deg) translate(3px, -3px); }
+  75%  { transform: rotate(-8deg) translate(-2px, -2px); }
+  100% { transform: rotate(0deg) translate(0, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .die.rolling { animation: none; }
+}
+
+/* Buttons */
+.buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 14px 0;
+}
+.btn {
+  font: inherit;
+  font-weight: 600;
+  padding: 12px;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.btn.primary { background: var(--green); color: #fff; }
+.btn.primary:hover:not(:disabled) { background: var(--green-dark); }
+.btn.accent { background: var(--navy); color: #fff; }
+.btn.accent:hover:not(:disabled) { background: var(--navy-light); }
+.btn.ghost { background: #fff; color: var(--navy); border-color: var(--navy); }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.btn:focus-visible, .die:focus-visible, .cat-row:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+
+/* Scorecard */
+.scorecard-section {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: 0 1px 4px rgba(20, 33, 61, 0.12);
+  overflow: hidden;
+}
+.scorecard { width: 100%; border-collapse: collapse; }
+.scorecard th {
+  background: var(--navy);
+  color: #fff;
+  text-align: left;
+  padding: 10px 12px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.scorecard td { padding: 10px 12px; border-bottom: 1px solid #e4e9f1; }
+.scorecard th:last-child, .scorecard td:last-child { text-align: right; width: 70px; font-weight: 700; }
+.rule { color: var(--muted); font-size: 0.88rem; }
+
+.cat-row { cursor: pointer; }
+.cat-row:hover:not(.used):not(.disabled) { background: var(--green-light); }
+.cat-row.preview .score { color: var(--green-dark); }
+.cat-row.selected { background: var(--gold); }
+.cat-row.selected .rule { color: var(--text); }
+.cat-row.used { background: #eef1f6; cursor: default; }
+.cat-row.used td { color: var(--muted); }
+.cat-row.used .score { color: var(--navy); }
+.cat-row.disabled { cursor: default; }
+.info-row { background: #f7f9fc; font-weight: 600; }
+
+/* Final box */
+.final {
+  margin-top: 14px;
+  text-align: center;
+  background: var(--navy);
+  color: #fff;
+  border-radius: var(--radius);
+  padding: 20px;
+}
+.final h2 { margin: 0 0 6px; }
+.final-score { font-size: 1.3rem; margin: 6px 0; }
+.final-score strong { color: var(--gold); font-size: 2rem; }
+
+/* Tablet and up: four buttons in one row */
+@media (min-width: 600px) {
+  .buttons { grid-template-columns: repeat(4, 1fr); }
+  .die { width: 80px; height: 80px; }
+  .pip::after { width: 13px; height: 13px; }
+}
+
+/* Small phones: hide combination text to save space */
+@media (max-width: 480px) {
+  .rule { display: none; }
+  .scorecard th:nth-child(2) { display: none; }
+  .die { width: 56px; height: 56px; padding: 6px; }
+  .dice { gap: 8px; }
+  .value { font-size: 1.4rem; }
+}
+@media (max-width: 350px) {
+  .app { padding: 10px; }
+  .die { width: 50px; height: 50px; }
+}
