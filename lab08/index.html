@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yatzy - Lab 8 (jQuery dice animation)</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="header">
+      <h1>Yatzy</h1>
+      <p class="subtitle">Single-player dice game</p>
+    </header>
+
+    <!-- Game state: turn, rolls left, total -->
+    <section class="status" aria-label="Game status">
+      <div class="status-card">
+        <span class="label">Turn</span>
+        <span class="value" id="turn-display">1 / 15</span>
+      </div>
+      <div class="status-card">
+        <span class="label">Rolls left</span>
+        <span class="value" id="rolls-display">3</span>
+      </div>
+      <div class="status-card total">
+        <span class="label">Total score</span>
+        <span class="value" id="total-display">0</span>
+      </div>
+    </section>
+
+    <!-- Guidance messages -->
+    <p class="message" id="message" role="status" aria-live="polite"></p>
+
+    <!-- Dice -->
+    <section class="dice-section" aria-label="Dice">
+      <div class="dice" id="dice-container"></div>
+      <p class="hint">Roll, then tap dice to keep them. Tap again to release.</p>
+    </section>
+
+    <!-- Buttons -->
+    <section class="buttons">
+      <button id="roll-button" class="btn primary">Roll dice</button>
+      <button id="end-turn-button" class="btn accent" disabled>End turn (score)</button>
+      <button id="end-game-button" class="btn ghost">End game</button>
+      <button id="new-game-button" class="btn ghost">New game</button>
+    </section>
+
+    <!-- Scorecard (built by YatzyGame.js) -->
+    <section class="scorecard-section" aria-label="Scorecard">
+      <table class="scorecard">
+        <thead>
+          <tr><th>Category</th><th>Combination</th><th>Score</th></tr>
+        </thead>
+        <tbody id="scorecard-body"></tbody>
+      </table>
+    </section>
+
+    <!-- Final result -->
+    <section class="final hidden" id="final-box" aria-live="polite">
+      <h2>Game over</h2>
+      <p class="final-score">Final score: <strong id="final-score">0</strong></p>
+      <p id="final-message"></p>
+    </section>
+  </main>
+
+  <!-- Lab 8: jQuery from the CDN (must load before YatzyGame.js) -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+  <script src="Dice.js"></script>
+  <script src="YatzyEngine.js"></script>
+  <script src="YatzyGame.js"></script>
+</body>
+</html>
