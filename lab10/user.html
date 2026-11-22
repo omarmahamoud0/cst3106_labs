@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hospital Triage – User</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="user-body">
+  <header class="site-header">
+    <h1>Hospital Triage – User</h1>
+    <nav class="top-nav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="user.html" class="active" aria-current="page">User</a>
+      <a href="staff.html">Staff</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <p class="description">Please select your type of injury and the level of pain associated with it.</p>
+
+    <form class="card">
+      <fieldset>
+        <legend>Type of injury:</legend>
+        <div class="injury-grid">
+          <div><input class="radio-input" type="radio" name="injury" id="i1"><label for="i1">Head</label></div>
+          <div><input class="radio-input" type="radio" name="injury" id="i2"><label for="i2">Heart</label></div>
+          <div><input class="radio-input" type="radio" name="injury" id="i3"><label for="i3">Lung</label></div>
+          <div><input class="radio-input" type="radio" name="injury" id="i4"><label for="i4">Neck</label></div>
+          <div><input class="radio-input" type="radio" name="injury" id="i5"><label for="i5">Stomach</label></div>
+          <div><input class="radio-input" type="radio" name="injury" id="i6"><label for="i6">Bone or Muscle</label></div>
+          <div><input class="radio-input" type="radio" name="injury" id="i7"><label for="i7">Burn or Cut</label></div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Level of pain:</legend>
+        <div class="pain-scale">
+          <div><input class="radio-input" type="radio" name="pain" id="p1"><label for="p1">1</label></div>
+          <div><input class="radio-input" type="radio" name="pain" id="p2"><label for="p2">2</label></div>
+          <div><input class="radio-input" type="radio" name="pain" id="p3"><label for="p3">3</label></div>
+          <div><input class="radio-input" type="radio" name="pain" id="p4"><label for="p4">4</label></div>
+          <div><input class="radio-input" type="radio" name="pain" id="p5"><label for="p5">5</label></div>
+          <div><input class="radio-input" type="radio" name="pain" id="p6"><label for="p6">6</label></div>
+          <div><input class="radio-input" type="radio" name="pain" id="p7"><label for="p7">7</label></div>
+          <div><input class="radio-input" type="radio" name="pain" id="p8"><label for="p8">8</label></div>
+          <div><input class="radio-input" type="radio" name="pain" id="p9"><label for="p9">9</label></div>
+          <div><input class="radio-input" type="radio" name="pain" id="p10"><label for="p10">10</label></div>
+        </div>
+        <div class="scale-ends helper"><span>1 (Not bad)</span><span>10 (Unbearable)</span></div>
+      </fieldset>
+
+      <p class="field-error" hidden>Please choose an injury type and a pain level to continue.</p>
+      <button type="button" class="btn btn-primary">Submit Entry</button>
+    </form>
+
+    <section class="confirm">
+      <h3>Entry received</h3>
+      <p>Your entry has been sent to the staff for review.</p>
+    </section>
+  </main>
+</body>
+</html>
